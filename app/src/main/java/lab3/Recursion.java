@@ -56,7 +56,10 @@ public class Recursion {
    * e.g. reverse("alp") => "pla"
    *      reverse("order") => "redro" */
   public static String reverse(String s) {
-      return ""; //TODO
+    if (s.equals("")) {
+      return "";
+    }
+    return s.substring(s.length() - 1) + reverse(s.substring(0, s.length() - 1));
   }
 
   ////////////////////////////////////////////////
