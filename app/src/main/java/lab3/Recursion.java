@@ -12,7 +12,7 @@ public class Recursion {
    *   len(s) = 1 + len(s[1..] otherwise */
   public static int len(String s) {
     // TODO: replace true with the correct base case condition
-    if (true) {
+    if (s.equals("")) {
       return 0;
     }
     return 1 + len(s.substring(1));
@@ -26,7 +26,14 @@ public class Recursion {
    *        countE(s[1:] otherwise
    */
   public static int countE(String s)  {
-      return 0; // TODO
+    if (s.equals("")) {
+      return 0;
+    }
+    int first = 0;
+    if (s.charAt(0) == 'e') {
+      first = 1;
+    }
+    return first + countE(s.substring(1));
   }
 
 
@@ -42,14 +49,17 @@ public class Recursion {
       int s = n % 10;
 
       // TODO: replace 0 with the correct recursive call:
-      return s + 0;
+      return s + sumDigs(n/10);
   }
 
   /** = the reverse of s
    * e.g. reverse("alp") => "pla"
    *      reverse("order") => "redro" */
   public static String reverse(String s) {
-      return ""; //TODO
+    if (s.equals("")) {
+      return "";
+    }
+    return s.substring(s.length() - 1) + reverse(s.substring(0, s.length() - 1));
   }
 
   ////////////////////////////////////////////////

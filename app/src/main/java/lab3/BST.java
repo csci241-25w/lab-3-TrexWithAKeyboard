@@ -12,7 +12,12 @@ public class BST {
     /* return true iff Node n is a leaf node. a null node is not considered
      * a leaf. */
     public boolean isLeaf(Node n) {
-        return false; //TODO
+        if (n == null){
+            return false;
+        }
+        if (n.left == null && n.right == null)
+            return true;
+        return false;
     }
 
     /** return the number of nodes in the tree */
@@ -24,7 +29,13 @@ public class BST {
      * = 0 if n is null
      * = 1 + number of nodes in left + number of nodes in right */
     private int size(Node n) {
-        return 0; // TODO
+        if (n == null) {
+            return 0;
+        }   
+        if (isLeaf(n) == true){
+            return 1;
+        }
+        return 1 + size(n.left) + size(n.right);
     }
 
 
@@ -34,7 +45,12 @@ public class BST {
         inOrder(root);
     }
     private void inOrder(Node n) {
-        // TODO
+        if (n == null) {
+            return;
+        }
+        inOrder(n.left);
+        traversal = traversal + n.value;
+        inOrder(n.right);
     }
 
 
@@ -44,7 +60,12 @@ public class BST {
         preOrder(root);
     }
     private void preOrder(Node n) {
-        // TODO
+        if (n == null) {
+            return;
+        }
+        traversal = traversal + n.value;
+        preOrder(n.left);
+        preOrder(n.right);
     }
 
     /** appends the values in the tree to String traversal using a post-order traversal */
@@ -53,7 +74,12 @@ public class BST {
         postOrder(root);
     }
     private void postOrder(Node n) {
-        //TODO
+        if (n == null) {
+            return;
+        }
+        postOrder(n.left);
+        postOrder(n.right);
+        traversal = traversal + n.value;
     }
 
     /** return the height of the tree.
@@ -66,7 +92,18 @@ public class BST {
 
     /* return the height of the tree rooted at n */
     private int height(Node n) {
-        return 0; // TODO
+        if (n == null){
+            return -1;
+        }
+        int leftH = height(n.left);
+        int rightH = height(n.right);
+
+        if (leftH > rightH){
+            return leftH + 1;
+        }
+        else {
+            return rightH + 1;
+        }
     }
 
     /** inner class representing a node in the tree. */
