@@ -45,7 +45,12 @@ public class BST {
         inOrder(root);
     }
     private void inOrder(Node n) {
-        // TODO
+        if (n == null) {
+            return;
+        }
+        inOrder(n.left);
+        traversal = traversal + n.value;
+        inOrder(n.right);
     }
 
 
@@ -55,7 +60,12 @@ public class BST {
         preOrder(root);
     }
     private void preOrder(Node n) {
-        // TODO
+        if (n == null) {
+            return;
+        }
+        traversal = traversal + n.value;
+        preOrder(n.left);
+        preOrder(n.right);
     }
 
     /** appends the values in the tree to String traversal using a post-order traversal */
@@ -64,7 +74,12 @@ public class BST {
         postOrder(root);
     }
     private void postOrder(Node n) {
-        //TODO
+        if (n == null) {
+            return;
+        }
+        postOrder(n.left);
+        postOrder(n.right);
+        traversal = traversal + n.value;
     }
 
     /** return the height of the tree.
