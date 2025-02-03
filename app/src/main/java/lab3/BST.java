@@ -92,7 +92,18 @@ public class BST {
 
     /* return the height of the tree rooted at n */
     private int height(Node n) {
-        return 0; // TODO
+        if (n == null){
+            return -1;
+        }
+        int leftH = height(n.left);
+        int rightH = height(n.right);
+
+        if (leftH > rightH){
+            return leftH + 1;
+        }
+        else {
+            return rightH + 1;
+        }
     }
 
     /** inner class representing a node in the tree. */
